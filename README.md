@@ -94,8 +94,12 @@ frontend/
 ├── index.html                 # HTML template
 ├── package.json               # Dependencies and scripts
 ├── vite.config.js             # Vite configuration
+├── vercel.json                # Vercel deployment configuration
 ├── eslint.config.js           # ESLint configuration
 ├── tailwind.config.js         # Tailwind CSS configuration
+├── .env                       # Environment variables (local)
+├── .env.example               # Environment variables template
+├── .gitignore                 # Git ignore rules
 └── README.md                  # This file
 ```
 
@@ -166,15 +170,39 @@ The frontend communicates with the backend API at `http://localhost:5000`:
 
 ## Environment Configuration
 
-The frontend uses environment variables for API configuration. Update the API URL in components as needed:
+The frontend uses the `VITE_API_URL` environment variable to configure the backend API endpoint.
 
-```javascript
-const API_URL = "http://localhost:5000/api";
+### Local Development
+
+Create a `.env` file in the root directory:
+```env
+VITE_API_URL=http://localhost:5000
 ```
 
-For production deployment, create a `.env` file:
+### Production
+
+Set the environment variable in your hosting platform:
+
+**Vercel:**
+1. Go to Project Settings → Environment Variables
+2. Add `VITE_API_URL` with your production backend URL
+
+**Other Platforms:**
+Create a `.env.production` file:
 ```env
-VITE_API_URL=https://api.yourdomain.com
+VITE_API_URL=https://your-api-domain.com
+```
+
+### Accessing Environment Variables in Code
+
+The environment variables are automatically loaded in Vite and can be accessed using:
+```javascript
+import.meta.env.VITE_API_URL
+```
+
+Example usage in axios calls:
+```javascript
+const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/swaps`);
 ```
 
 ## Development Workflow
@@ -196,6 +224,84 @@ This creates an optimized build in the `dist/` folder ready for deployment.
 To preview the production build:
 ```bash
 npm run preview
+```
+
+## Deployment
+
+### Vercel Deployment (Recommended)
+
+The project includes a `vercel.json` configuration file for seamless Vercel deployment.
+
+#### Prerequisites
+- Vercel account (sign up at https://vercel.com)
+- GitHub repository linked to Vercel
+
+#### Deployment Steps
+
+1. **Push to GitHub**
+```bash
+git push origin master
+```
+
+2. **Import Project to Vercel**
+   - Go to https://vercel.com/new
+   - Select "Import Git Repository"
+   - Choose the skillswap-frontend repository
+   - Click "Import"
+
+3. **Set Environment Variables**
+   - Go to Project Settings → Environment Variables
+   - Add `VITE_API_URL` with your backend API URL:
+   ```
+   VITE_API_URL=https://skillswap-backend-api.onrender.com
+   ```
+   - Click "Add"
+
+4. **Deploy**
+   - Click "Deploy"
+   - Vercel will automatically build and deploy your app
+
+#### Vercel Configuration
+
+The `vercel.json` file includes:
+- Build command: `npm run build`
+- Output directory: `dist/`
+- Framework detection: Vite
+- Automatic rewrites for SPA routing
+
+#### Environment Variables for Production
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `VITE_API_URL` | Backend API base URL | `https://skillswap-backend-api.onrender.com` |
+
+#### Custom Domain
+
+1. In Vercel Project Settings → Domains
+2. Add your custom domain
+3. Follow DNS configuration instructions
+
+### Alternative Hosting Options
+
+**Netlify**
+```bash
+npm run build
+# Drag and drop the `dist` folder to Netlify
+```
+
+**GitHub Pages**
+Update `vite.config.js`:
+```javascript
+export default {
+  base: '/skillswap-frontend/',
+  // ...rest of config
+}
+```
+
+**Docker**
+```bash
+docker build -t skillswap-frontend .
+docker run -p 80:3000 skillswap-frontend
 ```
 
 ## Styling
