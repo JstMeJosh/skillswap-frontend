@@ -1,7 +1,22 @@
 {
-  "name": "frontend",
+  "name": "skillswap-frontend",
+  "version": "1.0.0",
+  "description": "A modern React-based frontend for the SkillSwap platform - a community-driven skill exchange application",
+  "author": "Joshua Nnorom",
+  "license": "MIT",
+  "homepage": "https://github.com/JstMeJosh/skillswap-frontend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JstMeJosh/skillswap-frontend.git"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "skill-exchange",
+    "community",
+    "tailwindcss"
+  ],
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
