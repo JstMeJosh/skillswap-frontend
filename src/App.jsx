@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SwapForm from "./components/SwapForm";
 import SwapList from "./components/SwapList";
 import EditModal from "./components/EditModal";
+import Footer from "./components/Footer";
 
 function App() {
   const [swaps, setSwaps] = useState([]);
@@ -82,6 +83,7 @@ function App() {
           onUpdate={fetchSwaps}
         />
       </main>
+      <Footer />
       <ToastContainer
         position="top-right"
         autoClose={3000}
