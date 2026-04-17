@@ -33,10 +33,9 @@ function App() {
   // Toast notification for upcoming features
   useEffect(() => {
     const timer = setTimeout(() => {
-      toast.info("🚀 Coming soon features: Profiles, WhatsApp chat, and Email alerts!", {
+      toast.info("�️ Coming soon features: Profiles, WhatsApp chat, and Email alerts!", {
         position: "bottom-center",
-        autoClose: 10000,
-        icon: "🛠️"
+        autoClose: 10000
       });
     }, 1500);
 
