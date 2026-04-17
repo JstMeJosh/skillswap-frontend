@@ -33,7 +33,7 @@ function App() {
   // Toast notification for upcoming features
   useEffect(() => {
     const timer = setTimeout(() => {
-      toast.info("🚀 Big updates coming! Profiles, WhatsApp chat, and Email alerts are under construction.", {
+      toast.info("🚀 Coming soon features: Profiles, WhatsApp chat, and Email alerts!", {
         position: "bottom-center",
         autoClose: 10000,
         icon: "🛠️"
