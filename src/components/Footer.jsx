@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, MessageCircle, Heart } from "lucide-react";
+import { Code, MessageCircle, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,7 +31,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2"
                 >
-                  <Github size={16} /> Frontend Repo
+                  <Code size={16} /> Frontend Repo
                 </a>
               </li>
               <li>
@@ -41,7 +41,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2"
                 >
-                  <Github size={16} /> Backend Repo
+                  <Code size={16} /> Backend Repo
                 </a>
               </li>
               <li>
@@ -51,7 +51,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2"
                 >
-                  <Github size={16} /> Developer
+                  <Code size={16} /> Developer
                 </a>
               </li>
             </ul>
