@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Loader } from "lucide-react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SwapForm from "./components/SwapForm";
 import SwapList from "./components/SwapList";
@@ -28,6 +28,19 @@ function App() {
 
   useEffect(() => {
     fetchSwaps();
+  }, []);
+
+  // Toast notification for upcoming features
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      toast.info("🚀 Big updates coming! Profiles, WhatsApp chat, and Email alerts are under construction.", {
+        position: "bottom-center",
+        autoClose: 10000,
+        icon: "🛠️"
+      });
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleEditClick = (swap) => {
@@ -87,7 +100,7 @@ function App() {
       </div>
       <Footer />
       <ToastContainer
-        position="top-right"
+        position="bottom-center"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
