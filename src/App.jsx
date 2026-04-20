@@ -3,6 +3,7 @@ import axios from "axios";
 import { Loader } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Analytics } from "@vercel/analytics/react";
 import SwapForm from "./components/SwapForm";
 import SwapList from "./components/SwapList";
 import EditModal from "./components/EditModal";
@@ -111,6 +112,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
+      <Analytics />
     </>
   );
 }
